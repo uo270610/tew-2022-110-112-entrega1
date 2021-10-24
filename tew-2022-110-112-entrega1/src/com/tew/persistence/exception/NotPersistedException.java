@@ -23,3 +23,4 @@ public class NotPersistedException extends Exception {
 	
 	private static final long serialVersionUID = -4201153961047491939L;
 }
+

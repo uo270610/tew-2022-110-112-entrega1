@@ -51,6 +51,4 @@ public class Piso {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-
-	
 }

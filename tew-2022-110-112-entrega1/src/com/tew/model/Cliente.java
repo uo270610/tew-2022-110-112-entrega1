@@ -1,13 +1,12 @@
 package com.tew.model;
 
 public class Cliente {
-	private Long id;
-	private String login;
-	private String passwd;
-	private String nombre;
-	private String apellidos;
-	private String email;
-	
+	Long id;
+	String login;
+	String passwd;
+	String nombre;
+	String apellidos;
+	String email;
 	
 	public Long getId() {
 		return id;
@@ -46,5 +45,4 @@ public class Cliente {
 		this.email = email;
 	}
 	
-
 }
