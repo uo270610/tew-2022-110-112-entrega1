@@ -7,12 +7,12 @@
 
 	<p:panelGrid columns="2">
 		<h:panelGroup>
-			<h:outputLabel for="name" value="#{msgs.login_form_name_label}" />
+			<h:outputLabel for="email" value="#{msgs.login_form_name_label}" />
 		</h:panelGroup>
 		<h:panelGroup>
-			<p:inputText id="name" value="#{login.name}" required="true"
+			<p:inputText id="email" value="#{login.email}" required="true"
 				requiredMessage="#{msgs.login_form_name_label}: #{msgs.login_form_name_required}" />
-			<p:message for="name" />
+			<p:message for="email" />
 		</h:panelGroup>
 		<h:panelGroup>
 			<h:outputLabel for="password"
