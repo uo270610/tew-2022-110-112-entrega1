@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-index.xhtml">
+	<ui:define name="titulo">
+ #{msgs.registry_form_tittle}
+ </ui:define>
+	<ui:define name="menugeneral">
+	</ui:define>
+	<ui:define name="cuerpo">
+		<center>
+			<p:growl id="mensajes" showDetail="false" />
+			<h:form id="form-principal">
+				<ui:include src="/snippets/form-registro.xhtml" />
+				<p:commandButton value="#{msgs.registry_form_button_send}"
+				AQUI FALTA EN VEZ DE LLAMAR A LOGIN.VERIFY LLAMAR A ALGO QUE LO REGISTRE 
+				HAY QUE COMPROBAR QUE EL EMAIL NO ESTÁ EN USO Y TODA LA PESCA
+				
+					action="#{login.verify}" update=":mensajes">
+				</p:commandButton>
+			</h:form>
+		</center>
+	</ui:define>
+	<ui:define name="pie">
+	</ui:define>
+</ui:composition>
