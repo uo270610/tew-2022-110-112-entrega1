@@ -9,12 +9,12 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 8420789334117957380L;
 	
 	private String login;
-	private String name;
+	private String passwd;
 	
 	public User(String l, String n) {
 		// TODO Auto-generated constructor stub
 		this.login = l;
-		this.name = n;
+		this.passwd = n;
 	}
 	public String getLogin() {
 		return login;
@@ -22,11 +22,11 @@ public class User implements Serializable {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public String getName() {
-		return name;
+	public String getPasswd() {
+		return passwd;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPasswd(String name) {
+		this.passwd = name;
 	}
 	
 }
