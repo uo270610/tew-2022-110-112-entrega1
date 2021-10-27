@@ -10,6 +10,8 @@ import javax.faces.event.ActionEvent;
 
 import com.tew.business.LoginService;
 import com.tew.infrastructure.Factories;
+import com.tew.model.Agente;
+import com.tew.model.Cliente;
 import com.tew.model.User;
 
 @SessionScoped
@@ -60,8 +62,22 @@ public class BeanLogin implements Serializable {
 		return "login";
 	}
 
+	
 	private void putUserInSession(User user) {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_USER", user);
 	}
+	
+	/*
+	private void putAgentInSession(Agente user) {
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		session.put("LOGGEDIN_USER", user);
+	}
+	
+	private void putClientInSession(Cliente user) {
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		session.put("LOGGEDIN_USER", user);
+	}
+	
+	*/
 }
