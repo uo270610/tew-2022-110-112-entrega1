@@ -17,17 +17,17 @@ import com.tew.model.User;
 @ManagedBean(name = "login")
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 33333333L;
-	private String name = "";
+	private String email = "";
 	private String password = "";
 	
 	
 	//AQUI FALTA CODIGO
 
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
-	public void setName(String pepe) {
-		this.name = pepe;
+	public void setEmail(String pepe) {
+		this.email = pepe;
 	}
 	public String getPassword() {
 		return password;
@@ -48,7 +48,7 @@ public class BeanLogin implements Serializable {
 		ResourceBundle bundle = jsfCtx.getApplication().getResourceBundle(jsfCtx, "msgs");
 		FacesMessage msg = null;
 		LoginService login = Factories.services.createLoginService();
-		User user = login.verify(name, password);
+		User user = login.verify(email, password);
 		if (user != null) {
 			putUserInSession(user);
 			return "success";
