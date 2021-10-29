@@ -36,7 +36,7 @@ public class AgenteJdbcDao implements AgenteDao {
 					// Obtenemos la conexiï¿½ï¿½n a la base de datos.
 					Class.forName(SQL_DRV);
 					con = DriverManager.getConnection(SQL_URL, "sa", "");
-					ps = con.prepareStatement("select * from Agentes");
+					ps = con.prepareStatement("SELECT * FROM AGENTES");
 					rs = ps.executeQuery();
 
 					while (rs.next()) {

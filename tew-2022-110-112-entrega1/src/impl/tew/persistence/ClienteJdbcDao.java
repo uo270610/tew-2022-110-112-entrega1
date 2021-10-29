@@ -12,6 +12,8 @@ import com.tew.model.Cliente;
 import com.tew.model.Piso;
 import com.tew.model.PisoParaVisitar;
 import com.tew.persistence.ClienteDao;
+import com.tew.persistence.exception.AlreadyPersistedException;
+import com.tew.persistence.exception.NotPersistedException;
 import com.tew.persistence.exception.PersistenceException;
 
 public class ClienteJdbcDao implements ClienteDao {
@@ -35,7 +37,7 @@ public class ClienteJdbcDao implements ClienteDao {
 			// Obtenemos la conexi��n a la base de datos.
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
-			ps = con.prepareStatement("select * from CLIENTES");
+			ps = con.prepareStatement("SELECT * FROM CLIENTES");
 			rs = ps.executeQuery();
 			Cliente cliente = new Cliente();;
 			while (rs.next()) {
@@ -62,6 +64,187 @@ public class ClienteJdbcDao implements ClienteDao {
 		}
 		
 		return clientes;
+	}
+
+	@Override
+	public void save(Cliente c) throws AlreadyPersistedException {
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		Connection con = null;
+		int rows = 0;
+		
+		try {
+			// En una implementaci��n m��s sofisticada estas constantes habr��a 
+			// que sacarlas a un sistema de configuraci��n: 
+			// xml, properties, descriptores de despliege, etc 
+			String SQL_DRV = "org.hsqldb.jdbcDriver";
+			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
+
+			// Obtenemos la conexi��n a la base de datos.
+			Class.forName(SQL_DRV);
+			con = DriverManager.getConnection(SQL_URL, "sa", "");
+			ps = con.prepareStatement("INSERT INTO CLIENTES(LOGIN, PASSWD, NOMBRE, APELLIDOS, EMAIL) VALUES (?, ?, ?, ?, ?)");
+			
+			ps.setString(1, c.getLogin());
+			ps.setString(2, c.getPasswd());
+			ps.setString(3, c.getNombre());
+			ps.setString(4, c.getApellidos());
+			ps.setString(5, c.getEmail());
+			
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new AlreadyPersistedException("Cliente " + c + " already persisted");
+			} 
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Driver not found", e);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Invalid SQL or database schema", e);
+		}
+		finally  {
+			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
+			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+		}
+	}
+
+
+
+	@Override
+	public void update(Cliente c) throws NotPersistedException {
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		Connection con = null;
+		int rows = 0;
+		
+		try {
+			// En una implementaci��n m��s sofisticada estas constantes habr��a 
+			// que sacarlas a un sistema de configuraci��n: 
+			// xml, properties, descriptores de despliege, etc 
+			String SQL_DRV = "org.hsqldb.jdbcDriver";
+			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
+
+			// Obtenemos la conexi��n a la base de datos.
+			Class.forName(SQL_DRV);
+			con = DriverManager.getConnection(SQL_URL, "sa", "");
+			ps = con.prepareStatement("UPDATE CLIENTES LOGIN=?, PASSWD=?, NOMBRE=?, APELLIDOS=?, EMAIL=? "
+					+ "WHERE CLIENTES.ID=?");
+			
+			ps.setString(1, c.getLogin());
+			ps.setString(2, c.getPasswd());
+			ps.setString(3, c.getNombre());
+			ps.setString(4, c.getApellidos());
+			ps.setString(5, c.getEmail());
+			ps.setLong(6, c.getId());
+
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new NotPersistedException("Cliente " + c + " not found");
+			} 
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Driver not found", e);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Invalid SQL or database schema", e);
+		}
+		finally  {
+			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
+			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+		}
+	}
+
+
+
+	@Override
+	public void delete(Long id) throws NotPersistedException {
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		Connection con = null;
+		int rows = 0;
+		
+		try {
+			// En una implementaci��n m��s sofisticada estas constantes habr��a 
+			// que sacarlas a un sistema de configuraci��n: 
+			// xml, properties, descriptores de despliege, etc 
+			String SQL_DRV = "org.hsqldb.jdbcDriver";
+			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
+
+			// Obtenemos la conexi��n a la base de datos.
+			Class.forName(SQL_DRV);
+			con = DriverManager.getConnection(SQL_URL, "sa", "");
+			ps = con.prepareStatement("DELETE FROM CLIENTES WHERE CLIENTES.ID=?");
+			
+			ps.setLong(1, id);
+
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new NotPersistedException("Cliente " + id + " not found");
+			} 
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Driver not found", e);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Invalid SQL or database schema", e);
+		}
+		finally  {
+			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
+			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+		}
+	}
+
+
+
+	@Override
+	public Cliente findById(Long id) {
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Connection con = null;
+		Cliente cliente = null;
+		
+		try {
+			// En una implementaci��n m��s sofisticada estas constantes habr��a 
+			// que sacarlas a un sistema de configuraci��n: 
+			// xml, properties, descriptores de despliege, etc 
+			String SQL_DRV = "org.hsqldb.jdbcDriver";
+			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
+
+			// Obtenemos la conexi��n a la base de datos.
+			Class.forName(SQL_DRV);
+			con = DriverManager.getConnection(SQL_URL, "sa", "");
+			ps = con.prepareStatement("SELECT * FROM CLIENTES WHERE CLIENTES.ID=?");
+			ps.setLong(1, id);
+			
+			rs = ps.executeQuery();
+			
+			cliente = new Cliente();
+			if (rs.next()) {				
+				cliente.setId(rs.getLong("ID"));
+				cliente.setLogin(rs.getString("LOGIN"));
+				cliente.setNombre(rs.getString("NOMBRE"));
+				cliente.setApellidos(rs.getString("APELLIDOS"));
+				cliente.setEmail(rs.getString("EMAIL"));
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Driver not found", e);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Invalid SQL or database schema", e);
+		}
+		finally  {
+			if (rs != null) {try{ rs.close(); } catch (Exception ex){}};
+			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
+			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+		}
+		
+		return cliente;
 	}
 
 	@Override
@@ -207,10 +390,10 @@ public class ClienteJdbcDao implements ClienteDao {
 	}
 
 	@Override
-	public void solicitarVisita(Piso piso, long idc) {
+	public void solicitarVisita(Piso piso, long idc) throws NotPersistedException {
 		// TODO Auto-generated method stub
 		PreparedStatement ps = null;
-		ResultSet rs = null;
+		int rows = 0;
 		Connection con = null;
 		
 		try {
@@ -227,8 +410,10 @@ public class ClienteJdbcDao implements ClienteDao {
 			ps.setLong(2, idc);
 			//ps.setString(3, idk);
 			ps.setInt(4, 1);			
-			rs = ps.executeQuery();
-			
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new NotPersistedException("Cliente " + idc + " not found");
+			} 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new PersistenceException("Driver not found", e);
@@ -236,7 +421,6 @@ public class ClienteJdbcDao implements ClienteDao {
 			e.printStackTrace();
 			throw new PersistenceException("Invalid SQL or database schema", e);
 		} finally  {
-			if (rs != null) {try{ rs.close(); } catch (Exception ex){}};
 			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
 			if (con != null) {try{ con.close(); } catch (Exception ex){}};
 		}
@@ -244,10 +428,10 @@ public class ClienteJdbcDao implements ClienteDao {
 	}
 
 	@Override
-	public void confirmarVisita(long idp, long idc) {
+	public void confirmarVisita(long idp, long idc) throws NotPersistedException {
 		// TODO Auto-generated method stub
 		PreparedStatement ps = null;
-		ResultSet rs = null;
+		int rows = 0;
 		Connection con = null;
 		
 		try {
@@ -262,7 +446,10 @@ public class ClienteJdbcDao implements ClienteDao {
 			ps.setInt(1, 3);
 			ps.setLong(2, idp);
 			ps.setLong(3, idc);
-			rs = ps.executeQuery();
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new NotPersistedException("Cliente " + idc + " o piso " + idp + " not found");
+			} 
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -271,11 +458,11 @@ public class ClienteJdbcDao implements ClienteDao {
 			e.printStackTrace();
 			throw new PersistenceException("Invalid SQL or database schema", e);
 		} finally  {
-			if (rs != null) {try{ rs.close(); } catch (Exception ex){}};
 			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
 			if (con != null) {try{ con.close(); } catch (Exception ex){}};
 		}
 		
 	}
+
 
 }
