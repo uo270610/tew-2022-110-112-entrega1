@@ -2,25 +2,25 @@ package com.tew.model;
 
 public class PisoParaVisitar {
 
-	private Long p;
-	private Long c;
+	private Long idPiso;
+	private Long idCliente;
 	private Long fechaHoraCita;
 	private int estado;
 
-	public Long getP() {
-		return p;
+	public Long getidPiso() {
+		return idPiso;
 	}
 
-	public void setP(Long p) {
-		this.p = p;
+	public void setidPiso(Long p) {
+		this.idPiso = p;
 	}
 
-	public Long getC() {
-		return c;
+	public Long getidCliente() {
+		return idCliente;
 	}
 
-	public void setC(Long c) {
-		this.c = c;
+	public void setidCliente(Long c) {
+		this.idCliente = c;
 	}
 
 	public long getFechaHoraCita() {

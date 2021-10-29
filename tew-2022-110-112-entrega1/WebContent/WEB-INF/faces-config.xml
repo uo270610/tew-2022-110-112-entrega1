@@ -13,7 +13,7 @@
 
 	<managed-bean>
 		<managed-bean-name>controller</managed-bean-name>
-		<managed-bean-class>com.tew.presentation.BeanAlumnos</managed-bean-class>
+		<managed-bean-class>com.tew.presentation.BeanCliente</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
