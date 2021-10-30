@@ -4,6 +4,8 @@ public class ReturnVerify {
 
 	private User usuario;
     private String clase;
+    // IMPORTANTE, LA STRING TENDRA QUE SER 
+    // "AGENTE" O "CLIENTE" PARA QUE FUNCIONEN LOS CHECKS POSTERIORES
 
     public ReturnVerify(User usador, String clasecita) {
         this.usuario = usador;
