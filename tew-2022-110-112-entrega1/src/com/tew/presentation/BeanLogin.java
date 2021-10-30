@@ -12,6 +12,7 @@ import com.tew.business.LoginService;
 import com.tew.infrastructure.Factories;
 import com.tew.model.Agente;
 import com.tew.model.Cliente;
+import com.tew.model.ReturnVerify;
 import com.tew.model.User;
 
 @SessionScoped
@@ -49,8 +50,8 @@ public class BeanLogin implements Serializable {
 		ResourceBundle bundle = jsfCtx.getApplication().getResourceBundle(jsfCtx, "msgs");
 		FacesMessage msg = null;
 		LoginService login = Factories.services.createLoginService();
-		User user = login.verify(email, password);
-		if (user != null) {
+		ReturnVerify user = login.verify(email, password);
+		if (user.getUsuario() != null) {
 			putUserInSession(user);
 			return "success";
 		}
@@ -61,23 +62,11 @@ public class BeanLogin implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		return "login";
 	}
-
 	
-	private void putUserInSession(User user) {
+	private void putUserInSession(ReturnVerify user) {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		session.put("LOGGEDIN_USER", user);
+		session.put("LOGGEDIN_USER", user.getUsuario());
+		session.put(user.getTipoUsuario(), user.getUsuario());
 	}
 	
-	/*
-	private void putAgentInSession(Agente user) {
-		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		session.put("LOGGEDIN_USER", user);
-	}
-	
-	private void putClientInSession(Cliente user) {
-		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		session.put("LOGGEDIN_USER", user);
-	}
-	
-	*/
 }
