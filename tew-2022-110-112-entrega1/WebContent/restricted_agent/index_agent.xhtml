@@ -11,13 +11,17 @@
 	</ui:define>
 	<ui:define name="cuerpo">
 		<center>
+			<h:form id="form-agente">
 			<p:growl id="mensajes" showDetail="false" />
-				<p:commandLink value="#{msgs.gestionar_citas_travel}" action="gestion_agente_citas">
-       </p:commandLink>
-       	<p:commandLink value="#{msgs.gestionar_pisos_travel}" action="gestion_agente_casas">
-       </p:commandLink>
-       <p:commandLink value="#{msgs.gestionar_base_datos}" action="gestion_agente_basedatos">
-       </p:commandLink>
+			<p:commandLink value="#{msgs.gestionar_citas_travel}"
+				action="gestion_agente_citas">
+			</p:commandLink>
+			<p:commandLink value="#{msgs.gestionar_pisos_travel}"
+				action="gestion_agente_casas">
+			</p:commandLink>
+			<p:commandLink value="#{msgs.gestionar_base_datos}"
+				action="gestion_agente_basedatos">
+			</p:commandLink>
 			</h:form>
 		</center>
 	</ui:define>

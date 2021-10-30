@@ -39,7 +39,7 @@ public class ClienteJdbcDao implements ClienteDao {
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
 			ps = con.prepareStatement("SELECT * FROM CLIENTES");
 			rs = ps.executeQuery();
-			Cliente cliente = new Cliente();;
+			Cliente cliente = new Cliente();
 			while (rs.next()) {
 				cliente.setId(rs.getLong("ID"));
 				cliente.setLogin(rs.getString("LOGIN"));
@@ -165,6 +165,8 @@ public class ClienteJdbcDao implements ClienteDao {
 		Connection con = null;
 		int rows = 0;
 		
+		PreparedStatement psaux=null;
+		
 		try {
 			// En una implementaci��n m��s sofisticada estas constantes habr��a 
 			// que sacarlas a un sistema de configuraci��n: 
@@ -184,6 +186,12 @@ public class ClienteJdbcDao implements ClienteDao {
 				throw new NotPersistedException("Cliente " + id + " not found");
 			} 
 			
+			ps = con.prepareStatement("DELETE FROM PISOS_PARA_VISITAR WHERE ID_CLIENTE=?");
+			ps.setLong(1, id);
+			rows = ps.executeUpdate();
+			if (rows != 1) {
+				throw new NotPersistedException("El cliente " + id + " not tenia pisos para visitar");
+			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new PersistenceException("Driver not found", e);
@@ -194,6 +202,7 @@ public class ClienteJdbcDao implements ClienteDao {
 		finally  {
 			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
 			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+			if (psaux != null) {try{ psaux.close(); } catch (Exception ex){}};
 		}
 	}
 
@@ -361,7 +370,7 @@ public class ClienteJdbcDao implements ClienteDao {
 			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
-			ps = con.prepareStatement("SELECT * FROM PISOS_PARA_VISITAR WHERE ID_CLIENTE=?");
+			ps = con.prepareStatement("SELECT * FROM PISOS_PARA_VISITAR WHERE ID_CLIENTE=? AND ESTADO=2");
 			ps.setLong(1, id);
 			rs = ps.executeQuery();
 			
@@ -412,7 +421,7 @@ public class ClienteJdbcDao implements ClienteDao {
 			ps.setInt(4, 1);			
 			rows = ps.executeUpdate();
 			if (rows != 1) {
-				throw new NotPersistedException("Cliente " + idc + " not found");
+				throw new NotPersistedException("Cliente " + idc + " o piso " + piso.getId() + " not found");
 			} 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -463,6 +472,5 @@ public class ClienteJdbcDao implements ClienteDao {
 		}
 		
 	}
-
-
+	
 }
