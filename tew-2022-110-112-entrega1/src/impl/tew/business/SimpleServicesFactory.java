@@ -4,6 +4,7 @@ package impl.tew.business;
 import com.tew.business.AgenteService;
 import com.tew.business.ClienteService;
 import com.tew.business.LoginService;
+import com.tew.business.PisoService;
 import com.tew.business.PublicoService;
 import com.tew.business.ServicesFactory;
 
@@ -31,6 +32,11 @@ public class SimpleServicesFactory implements ServicesFactory {
 	public AgenteService createAgenteService() {
 		// TODO Auto-generated method stub
 		return new SimpleAgenteService();
+	}
+	
+	@Override
+	public PisoService createPisoService() {
+		return null;
 	}
 
 }
