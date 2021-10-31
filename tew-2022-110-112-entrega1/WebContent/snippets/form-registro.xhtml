@@ -6,7 +6,7 @@
 	<h:panelGrid id="Grid" columns="2" cellpadding="5">
   #{msgs.nombre} 
   <h:panelGroup>
-			<p:inputText value="#{alumno.nombre}" required="true"
+			<p:inputText value="#{cliente.nombre}" required="true"
 				requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
 				id="nombre">
@@ -17,7 +17,7 @@
   
   #{msgs.apellidos} 
   <h:panelGroup>
-			<p:inputText value="#{alumno.apellidos}" required="true"
+			<p:inputText value="#{cliente.apellidos}" required="true"
 				requiredMessage="#{msgs.formAlta_apellidos_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_apellidos_validatorMessage}"
 				id="apellidos">
@@ -28,27 +28,38 @@
   
   #{msgs.contraseña}
   <h:panelGroup>
-			<p:inputText value="#{alumno.iduser}" required="true"
+			<p:inputText value="#{cliente.passwd}" required="true"
 				requiredMessage="#{msgs.formAlta_iduser_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_iduser_validatorMessage}"
-				id="iduser">
+				id="passwd">
 				<f:validateLength minimum="5" maximum="8" />
 			</p:inputText>
-			<p:message for="iduser" />
+			<p:message for="passwd" />
 		</h:panelGroup>  
   
   #{msgs.correo}
   <h:panelGroup>
-			<p:inputText value="#{alumno.email}" required="true"
+			<p:inputText value="#{cliente.email}" required="true"
 				requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
 				validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
-				id="correo">
+				id="email">
 				<f:validateRegex pattern=".+@.+\.[a-z]+" />
 			</p:inputText>
-			<p:message for="correo" />
+			<p:message for="email" />
 		</h:panelGroup>
-		<p:commandButton value="#{msgs.botonSalvar}" process="@form"
-			action="#{controller.salva}" update="Grid">
+		
+	  #{msgs.login}
+  <h:panelGroup>
+			<p:inputText value="#{cliente.login}" required="true"
+				requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
+				id="login">
+				<f:validateRegex pattern=".+@.+\.[a-z]+" />
+			</p:inputText>
+			<p:message for="login" />
+		</h:panelGroup>
+		<p:commandButton value="#{msgs.registry_form_button_send}" process="@form"
+			action="#{clientes.salva}" update=":mensajes">
 		</p:commandButton>
 	</h:panelGrid>
 </ui:composition>

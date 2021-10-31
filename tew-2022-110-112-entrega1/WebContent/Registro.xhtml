@@ -14,15 +14,10 @@
 			<p:growl id="mensajes" showDetail="false" />
 			<h:form id="form-principal">
 				<ui:include src="/snippets/form-registro.xhtml" />
-				<p:commandButton value="#{msgs.registry_form_button_send}"
-				AQUI FALTA EN VEZ DE LLAMAR A LOGIN.VERIFY LLAMAR A ALGO QUE LO REGISTRE 
-				HAY QUE COMPROBAR QUE EL EMAIL NO ESTÁ EN USO Y TODA LA PESCA
-				
-					action="#{login.verify}" update=":mensajes">
-				</p:commandButton>
 			</h:form>
 		</center>
 	</ui:define>
 	<ui:define name="pie">
+	<ui:include src="/snippets/pie-casa.xhtml" />
 	</ui:define>
 </ui:composition>

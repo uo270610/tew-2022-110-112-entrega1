@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16357010761350" configfile="/tew-2022-110-112-entrega1/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="178" id="pf16357014450014" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf16357014450015" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="Registro.xhtml" x="338" y="178" id="pf16357014450016" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf16357114232837 pf16357114232838" inlinks="pf16357014450015 pf16357114232838" path="/Registro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted_client/index_client.xhtml" x="554" y="178" id="pf16357114232839" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf16357114232837" path="/restricted_client/index_client.xhtml"/>
+  <links id="pf16357014450015" target="pf16357014450016" source="pf16357014450014" outcome="registro"/>
+  <links id="pf16357114232837" target="pf16357114232839" source="pf16357014450016" outcome="success" fromaction="#{clientes.salva}"/>
+  <links id="pf16357114232838" target="pf16357014450016" source="pf16357014450016" outcome="error" fromaction="#{clientes.salva}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>
