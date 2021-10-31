@@ -30,7 +30,7 @@ public class SimpleServicesFactory implements ServicesFactory {
 	@Override
 	public AgenteService createAgenteService() {
 		// TODO Auto-generated method stub
-		return null;
+		return new SimpleAgenteService();
 	}
 
 }

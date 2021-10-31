@@ -24,7 +24,5 @@ public class SimplePersistenceFactory implements PersistenceFactory{
 		// TODO Auto-generated method stub
 		return new PisoJdbcDao();
 	}
-	
-	
 
 }
