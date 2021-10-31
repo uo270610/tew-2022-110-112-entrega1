@@ -53,7 +53,12 @@ public class BeanLogin implements Serializable {
 		ReturnVerify user = login.verify(email, password);
 		if (user.getUsuario() != null) {
 			putUserInSession(user);
-			return "success";
+			if (user.getTipoUsuario()=="AGENTE") {
+				return "success_agent";
+			}
+			else {
+				return "success_client";
+			}
 		}
 		// si el usuario no se encuentra
 		// se prepara el mensaje que saldra en la vista del cliente

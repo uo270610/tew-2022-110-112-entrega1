@@ -29,6 +29,12 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	
+	<managed-bean>
+		<managed-bean-name>pisos</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanPisos</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -52,10 +58,37 @@
 </navigation-rule>
 
 <navigation-rule>
+ <from-view-id>/index.xhtml</from-view-id>
+	<navigation-case>
+		<from-action>#{login.verify}</from-action>
+		<from-outcome>success_agent</from-outcome>
+		<to-view-id>/restricted_agent/index_agent.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-action>#{login.verify}</from-action>
+		<from-outcome>success_client</from-outcome>
+		<to-view-id>/restricted_client/index_client.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-action>#{login.verify}</from-action>
+		<from-outcome>login</from-outcome>
+		<to-view-id>/index.xhtml</to-view-id>
+	</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 		<from-outcome>casa</from-outcome>
 			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+		<from-outcome>casa_agent</from-outcome>
+			<to-view-id>/restricted_agent/index_agent.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+		<from-outcome>casa_client</from-outcome>
+			<to-view-id>/restricted_client/index_client.xhtml</to-view-id>
 		</navigation-case>
 		</navigation-rule>
 	

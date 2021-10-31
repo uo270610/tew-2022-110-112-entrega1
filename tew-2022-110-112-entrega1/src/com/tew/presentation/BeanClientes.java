@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
@@ -108,4 +110,28 @@ public class BeanClientes implements Serializable {
 		session.put("CLIENTE", user);
 	}
 
+	
+	 //Se inicia correctamente el MBean inyectado si JSF lo hubiera crea
+    //y en caso contrario se crea. (hay que tener en cuenta que es un Bean de sesión)
+    //Se usa @PostConstruct, ya que en el contructor no se sabe todavía si el Managed Bean
+    //ya estaba construido y en @PostConstruct SI.
+    @PostConstruct
+    public void init() {    	  
+      System.out.println("BeanClientes - PostConstruct"); 
+      //Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
+      clientito = (BeanCliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("cliente"));
+      //si no existe lo creamos e inicializamos
+      if (clientito == null) { 
+        System.out.println("BeanClientes - No existia");
+        clientito = new BeanCliente();
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "cliente", clientito);
+      }
+    }
+    @PreDestroy
+    public void end()  {
+        System.out.println("BeanAlumnos - PreDestroy");
+    }
+	
+	
+	
 }

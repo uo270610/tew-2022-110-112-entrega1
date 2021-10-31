@@ -19,7 +19,7 @@ public class BeanPiso extends Piso implements Serializable {
 	//Este método es necesario para copiar el alumno a editar cuando
 	//se pincha el enlace Editar en la vista listado.xhtml. Podría sustituirse 
 	//por un método editar en BeanAlumnos.
-		public void setAlumno(Piso pisin) {
+		public void setPiso(Piso pisin) {
 			setId(pisin.getId());
 			setIdAgente(pisin.getIdAgente());
 			setPrecio(pisin.getPrecio());

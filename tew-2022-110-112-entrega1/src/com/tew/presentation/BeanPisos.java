@@ -147,19 +147,19 @@ public class BeanPisos implements Serializable{
 	     //ya estaba construido y en @PostConstruct SI.
 	     @PostConstruct
 	     public void init() {    	  
-	       System.out.println("BeanAlumnos - PostConstruct"); 
+	       System.out.println("BeanPisos - PostConstruct"); 
 	       //Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
-	       piso = (BeanPiso) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("alumno"));
+	       piso = (BeanPiso) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("piso"));
 	       //si no existe lo creamos e inicializamos
 	       if (piso == null) { 
-	         System.out.println("BeanAlumnos - No existia");
+	         System.out.println("BeanPisos - No existia");
 	         piso = new BeanPiso();
-	         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "alumno", piso);
+	         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "piso", piso);
 	       }
 	     }
 	     @PreDestroy
 	     public void end()  {
-	         System.out.println("BeanAlumnos - PreDestroy");
+	         System.out.println("BeanPisos - PreDestroy");
 	     }
 
 	}
