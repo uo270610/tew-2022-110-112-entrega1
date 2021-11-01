@@ -22,6 +22,8 @@ public class BeanLogin implements Serializable {
 	private String email = "";
 	private String password = "";
 	
+	private User usuarin;
+	
 	
 	//AQUI FALTA CODIGO
 
@@ -51,6 +53,9 @@ public class BeanLogin implements Serializable {
 		FacesMessage msg = null;
 		LoginService login = Factories.services.createLoginService();
 		ReturnVerify user = login.verify(email, password);
+		
+		
+
 		if (user.getUsuario() != null) {
 			putUserInSession(user);
 			if (user.getTipoUsuario()=="AGENTE") {
@@ -59,6 +64,7 @@ public class BeanLogin implements Serializable {
 			else {
 				return "success_client";
 			}
+			
 		}
 		// si el usuario no se encuentra
 		// se prepara el mensaje que saldra en la vista del cliente

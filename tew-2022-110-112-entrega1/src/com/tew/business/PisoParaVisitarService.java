@@ -11,6 +11,15 @@ public interface PisoParaVisitarService {
 	
 	List<PisoParaVisitar> getPisosParaVisitar() throws Exception;
 	List<PisoParaVisitar> getPisosParaVisitarAgente(long idAgente) throws Exception;
+	
+	
+	
+	//esta
+	List<PisoParaVisitar> getPisosParaVisitarCliente(long idAgente) throws Exception;
+	
+	
+	
+	
 	void deletePisoParaVisitar(long idCliente, long idPiso) throws EntityNotFoundException;
 	PisoParaVisitar findById(long idCliente, long idPiso) throws EntityNotFoundException;
 	void savePisoParaVisitar(PisoParaVisitar alumno) throws EntityAlreadyExistsException;

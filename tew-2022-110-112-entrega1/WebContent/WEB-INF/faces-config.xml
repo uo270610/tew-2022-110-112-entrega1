@@ -133,6 +133,14 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>/restricted_agent/gestionar_citas_client.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editar</from-outcome>
+			<to-view-id>/restricted_agent/editar_citas_client.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
  <from-view-id>/restricted/editar_citas_agent.xhtml</from-view-id>
 	<navigation-case>
 		<from-action>#{pisosParaVisitar.salva}</from-action>
