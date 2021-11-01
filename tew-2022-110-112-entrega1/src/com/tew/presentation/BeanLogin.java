@@ -75,15 +75,17 @@ public class BeanLogin implements Serializable {
 		session.put(user.getTipoUsuario(), user.getUsuario());
 	}
 	
-	private void logoutCliente() {
+	public String logoutCliente() {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.remove("CLIENTE");
+		return "exito";
 		
 	}
 	
-	private void logoutAgente() {
+	public String logoutAgente() {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.remove("AGENTE");
+		return "exito";
 	}
 	
 	

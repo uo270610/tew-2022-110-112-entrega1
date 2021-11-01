@@ -92,6 +92,16 @@
 		<from-outcome>casa_client</from-outcome>
 			<to-view-id>/restricted_client/index_client.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+		<from-action>#{login.logoutCliente}</from-action>
+		<from-outcome>exito</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+		<from-action>#{login.logoutAgente}</from-action>
+		<from-outcome>exito</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
 </navigation-rule>
 
 <navigation-rule>
