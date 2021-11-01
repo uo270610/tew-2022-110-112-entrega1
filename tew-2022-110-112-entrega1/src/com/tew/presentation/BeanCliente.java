@@ -14,12 +14,12 @@ public class BeanCliente extends Cliente implements Serializable {
 	private static final long serialVersionUID = 55556L;
 	
 	public BeanCliente() {
-		iniciaAlumno(null);
+		iniciaCliente(null);
 	}
 
 //Iniciamos los datos del alumno con los valores por defecto 
 //extraídos del archivo de propiedades correspondiente
-    public void iniciaAlumno(ActionEvent event) {
+    public void iniciaCliente(ActionEvent event) {
 	    FacesContext facesContext = FacesContext.getCurrentInstance();
     	    ResourceBundle bundle = 
  	        facesContext.getApplication().getResourceBundle(facesContext, "msgs");

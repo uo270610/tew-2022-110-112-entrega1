@@ -19,58 +19,40 @@ import impl.tew.business.classes.ClientesSolicitarVisita;
 
 public class SimpleClienteService {
 
-	List<Cliente> getClientes() throws Exception{
-		
-		return new ClientesListado().getCliente();
-		
+	List<Cliente> getClientes() throws Exception{		
+		return new ClientesListado().getCliente();		
 	}
 	
-	void saveCliente(Cliente cliente) throws AlreadyPersistedException {
-		
-		new ClientesAlta().save(cliente);
-		
+	void saveCliente(Cliente cliente) throws AlreadyPersistedException {		
+		new ClientesAlta().save(cliente);		
 	}
 	
-	void updateCliente(long id) throws NotPersistedException {
-		
-		new ClientesBaja().delete(id);
-		
+	void updateCliente(long id) throws NotPersistedException {		
+		new ClientesBaja().delete(id);		
 	}
 	
 	Cliente findById(Long id) throws NotPersistedException {
-		
-		return new ClientesBuscar().find(id);
-		
+		return new ClientesBuscar().find(id);		
 	}
 	
-	List<Piso> consultaPisosPorCiudad(String ciudad) throws NotPersistedException {
-		
-		return new ClientesConsultaPorCiudad().consultaPorCiudad(ciudad);
-		
+	List<Piso> consultaPisosPorCiudad(String ciudad) throws NotPersistedException {		
+		return new ClientesConsultaPorCiudad().consultaPorCiudad(ciudad);		
 	}
 	
-	List<Piso> consultaPisosPorPrecio(int min, int max) throws NotPersistedException {
-		
-		return new ClientesConsultaPorPrecio().consultaPorCiudad(min, max);
-		
+	List<Piso> consultaPisosPorPrecio(int min, int max) throws NotPersistedException {		
+		return new ClientesConsultaPorPrecio().consultaPorCiudad(min, max);		
 	}
 	
-	void consultaPisoVisitar(Long id) {
-		
-		new ClientesConsultaPisoVisitar().consultaPisoVisitar(id);
-	
+	void consultaPisoVisitar(Long id) {		
+		new ClientesConsultaPisoVisitar().consultaPisoVisitar(id);	
 	}
 	
-	void solicitarVisita(Piso piso, long idCliente) throws NotPersistedException {
-		
-		new ClientesSolicitarVisita().solicitarVisita(piso, idCliente);
-		
+	void solicitarVisita(Piso piso, long idCliente) throws NotPersistedException {		
+		new ClientesSolicitarVisita().solicitarVisita(piso, idCliente);		
 	}
 	
-	void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException {
-		
-		new ClientesConfirmarVisita().confirmarVisita(idPiso, idCliente);
-		
+	void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException {	
+		new ClientesConfirmarVisita().confirmarVisita(idPiso, idCliente);	
 	}
 	
 }
