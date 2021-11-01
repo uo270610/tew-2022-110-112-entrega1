@@ -7,5 +7,6 @@ public interface ServicesFactory {
 	ClienteService createClienteService();
 	AgenteService createAgenteService();
 	PisoService createPisoService();
+	PisoParaVisitarService createPisoParaVisitarService();
 	
 }
