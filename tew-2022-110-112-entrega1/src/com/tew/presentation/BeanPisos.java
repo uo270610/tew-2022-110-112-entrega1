@@ -83,7 +83,7 @@ public class BeanPisos implements Serializable{
 					// a trav��s de la factor��a
 					service = Factories.services.createPisoService();
 			      //Aliminamos el alumno seleccionado en la tabla
-					service.deletePiso(piso.getId());
+					service.deletePiso(alumno.getId());
 				  //Actualizamos el javabean de alumnos inyectado en la tabla.
 					pisos = (Piso [])service.getPisos().toArray(new Piso[0]);
 					return "exito";
