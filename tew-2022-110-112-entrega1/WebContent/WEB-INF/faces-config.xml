@@ -122,7 +122,33 @@
 			<from-outcome>creacion_agente_casas</from-outcome>
 			<to-view-id>/restricted_agent/CreacionPisos_agent.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>gestion_agente_citas</from-outcome>
+			<to-view-id>/restricted_agent/gestionar_citas_agent.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/restricted_agent/gestionar_citas_agent.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editar</from-outcome>
+			<to-view-id>/restricted_agent/editar_citas_agent.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+ <from-view-id>/restricted/editar_citas_agent.xhtml</from-view-id>
+	<navigation-case>
+		<from-action>#{pisosParaVisitar.salva}</from-action>
+		<from-outcome>exito</from-outcome>
+		<to-view-id>/restricted_agent/gestionar_citas_agent.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-action>#{pisosParaVisitar.salva}</from-action>
+		<from-outcome>error</from-outcome>
+		<to-view-id>/restricted_agent/editar_citas_agent.xhtml</to-view-id>
+	</navigation-case>
+</navigation-rule>
 
 	
 </faces-config>
