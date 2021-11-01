@@ -13,7 +13,7 @@ public class SimpleServicesFactory implements ServicesFactory {
 	@Override
 	public LoginService createLoginService() {
 		// TODO Auto-generated method stub
-		return null;
+		return new SimpleLoginService();
 	}
 
 	@Override

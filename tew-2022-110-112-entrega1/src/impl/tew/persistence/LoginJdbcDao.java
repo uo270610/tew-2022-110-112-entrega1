@@ -38,8 +38,9 @@ public class LoginJdbcDao implements LoginDao{
 
 			User user = new User();
 			rv = new ReturnVerify();
-			
+			System.out.print("Hola");
 			if(rs.next()) {
+				System.out.print("acceso a la base de datos");
 				user.setLogin(email);
 				user.setPasswd(passwd);
 				rv.setUsuario(user);

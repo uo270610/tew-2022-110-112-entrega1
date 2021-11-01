@@ -6,14 +6,11 @@ import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import com.tew.business.LoginService;
 import com.tew.infrastructure.Factories;
-import com.tew.model.Agente;
-import com.tew.model.Cliente;
 import com.tew.model.ReturnVerify;
-import com.tew.model.User;
+import com.tew.persistence.exception.NotPersistedException;
 
 @SessionScoped
 @ManagedBean(name = "login")
@@ -22,7 +19,6 @@ public class BeanLogin implements Serializable {
 	private String email = "";
 	private String password = "";
 	
-	private User usuarin;
 	
 	
 	//AQUI FALTA CODIGO
@@ -44,7 +40,7 @@ public class BeanLogin implements Serializable {
 	//lo de arriba ha sido añadiod por mi
 	
 	
-	public String verify() {
+	public String verify() throws NotPersistedException {
 		// necesario para accede a msgs y a los mensajes en español e ingles de los
 		// ficheros
 		// de propiedades
