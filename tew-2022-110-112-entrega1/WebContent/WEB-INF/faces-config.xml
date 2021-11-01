@@ -133,15 +133,27 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>/restricted_agent/gestionar_citas_client.xhtml</from-view-id>
+		<from-view-id>/restricted_client/gestionar_citas_client.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>editar</from-outcome>
-			<to-view-id>/restricted_agent/editar_citas_client.xhtml</to-view-id>
+			<to-view-id>/restricted_client/editar_citas_client.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
- <from-view-id>/restricted/editar_citas_agent.xhtml</from-view-id>
+		<from-view-id>/restricted_client/index_client.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gestion_agente_citas</from-outcome>
+			<to-view-id>/restricted_client/gestion_citas_client.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>gestion_cliente_casas</from-outcome>
+			<to-view-id>/restricted_client/gestionar_pisos_client.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+ <from-view-id>/restricted_agent/editar_citas_agent.xhtml</from-view-id>
 	<navigation-case>
 		<from-action>#{pisosParaVisitar.salva}</from-action>
 		<from-outcome>exito</from-outcome>
