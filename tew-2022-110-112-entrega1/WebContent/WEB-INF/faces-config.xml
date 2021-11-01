@@ -45,7 +45,7 @@
  <from-view-id>/Registro.xhtml</from-view-id>
 	<navigation-case>
 		<from-action>#{clientes.salva}</from-action>
-		<from-outcome>success</from-outcome>
+		<from-outcome>exito</from-outcome>
 		<to-view-id>/restricted_client/index_client.xhtml</to-view-id>
 	</navigation-case>
 	<navigation-case>
