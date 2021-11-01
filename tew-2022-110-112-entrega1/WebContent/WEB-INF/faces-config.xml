@@ -42,14 +42,6 @@
 	</managed-bean>
 	
 	<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>registro</from-outcome>
-			<to-view-id>/Registro.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
  <from-view-id>/Registro.xhtml</from-view-id>
 	<navigation-case>
 		<from-action>#{clientes.salva}</from-action>
@@ -65,6 +57,10 @@
 
 <navigation-rule>
  <from-view-id>/index.xhtml</from-view-id>
+ <navigation-case>
+			<from-outcome>registro</from-outcome>
+			<to-view-id>/Registro.xhtml</to-view-id>
+		</navigation-case>
 	<navigation-case>
 		<from-action>#{login.verify}</from-action>
 		<from-outcome>success_agent</from-outcome>

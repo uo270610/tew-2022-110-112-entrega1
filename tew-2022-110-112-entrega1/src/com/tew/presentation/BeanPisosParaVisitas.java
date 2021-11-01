@@ -26,6 +26,8 @@ public class BeanPisosParaVisitas implements Serializable{
           
           private PisoParaVisitar[] pisosParaVisitarAgente= null;
           
+          private PisoParaVisitar[] pisosParaVisitarCliente = null;
+          
           private Agente agentin = new Agente();
           
         //uso de inyección de dependencia

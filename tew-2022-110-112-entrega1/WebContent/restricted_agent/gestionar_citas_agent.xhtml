@@ -11,7 +11,7 @@
 
 	<ui:define name="cuerpo">
 		<h:form>
-			<p:dataTable id="tablaListado" var="vcita" value="#{pisosParaVisitar.pisosParaVisitar}" border="1">
+			<p:dataTable id="tablaListado" var="vcita" value="#{pisosParaVisitar.pisosParaVisitarAgente}" border="1">
 				<p:column>
 					<f:facet name="header">#{msgs.tablaIdPiso}</f:facet>#{vcita.idPiso}</p:column>
 				<p:column>
