@@ -4,6 +4,7 @@ import com.tew.persistence.AgenteDao;
 import com.tew.persistence.ClienteDao;
 import com.tew.persistence.PersistenceFactory;
 import com.tew.persistence.PisoDao;
+import com.tew.persistence.PisoParaVisitarDao;
 
 public class SimplePersistenceFactory implements PersistenceFactory{
 
@@ -23,6 +24,12 @@ public class SimplePersistenceFactory implements PersistenceFactory{
 	public PisoDao createPisoDao() {
 		// TODO Auto-generated method stub
 		return new PisoJdbcDao();
+	}
+
+	@Override
+	public PisoParaVisitarDao createPisoParaVisitarDao() {
+		// TODO Auto-generated method stub
+		return new PisoParaVisitarJdbcDao();
 	}
 
 }

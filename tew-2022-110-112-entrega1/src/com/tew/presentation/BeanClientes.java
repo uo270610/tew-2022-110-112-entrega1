@@ -93,7 +93,7 @@ public class BeanClientes implements Serializable {
 			// a través de la factoría
 			service = Factories.services.createClienteService();
 			service.saveCliente(clientito);
-			usuario= new User(clientito.getLogin(),clientito.getPasswd());
+			usuario= new User(clientito.getLogin(), clientito.getPasswd());
 			putUserInSession(usuario);
 			return "exito";
 		} catch (Exception e) {
