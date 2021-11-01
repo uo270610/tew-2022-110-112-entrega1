@@ -11,7 +11,7 @@ public class ClientesBuscar {
 		ClienteDao dao = Factories.persistence.createClienteDao();
 		Cliente c = dao.findById(id);
 		if (c == null) {
-			throw new NotPersistedException("No se ha encontrado el alumno");
+			throw new NotPersistedException("No se ha encontrado el cliente");
 		}
 		
 		return c;
