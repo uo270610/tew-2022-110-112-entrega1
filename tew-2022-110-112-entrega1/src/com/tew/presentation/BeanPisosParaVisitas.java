@@ -10,6 +10,7 @@ import javax.faces.event.ActionEvent;
 
 import com.tew.business.PisoParaVisitarService;
 import com.tew.infrastructure.Factories;
+import com.tew.model.Agente;
 import com.tew.model.PisoParaVisitar;
 
 @ManagedBean
@@ -22,6 +23,10 @@ public class BeanPisosParaVisitas implements Serializable{
 	     
 		
           private PisoParaVisitar[] pisosParaVisitar = null;
+          
+          private PisoParaVisitar[] pisosParaVisitarAgente= null;
+          
+          private Agente agentin = new Agente();
           
         //uso de inyección de dependencia
           @ManagedProperty(value="#{pisoparavisita}") 
@@ -76,6 +81,27 @@ public class BeanPisosParaVisitas implements Serializable{
 				  }
 				  
 		 	  }
+	       
+	       
+	       public String listadoAgente() {
+		       PisoParaVisitarService service;
+				  try {
+				  // Acceso a la implementacion de la capa de negocio 
+					// a trav��s de la factor��a
+					service = Factories.services.createPisoParaVisitarService();
+					// De esta forma le damos informaci��n a toArray para poder hacer el casting a Alumno[]
+					agentin = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("AGENTE"));
+					pisosParaVisitarAgente = (PisoParaVisitar [])service.getPisosParaVisitarAgente(agentin.getId()).toArray(new PisoParaVisitar[0]);
+					
+					return "exito";
+					
+				  } catch (Exception e) {
+					e.printStackTrace();  
+					return "error";
+				  }
+				  
+		 	  }
+	       
 	       public String baja(PisoParaVisitar alumno) {
 		       PisoParaVisitarService service;
 				  try {
