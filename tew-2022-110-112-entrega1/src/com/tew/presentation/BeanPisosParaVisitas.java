@@ -12,6 +12,7 @@ import com.tew.business.PisoParaVisitarService;
 import com.tew.infrastructure.Factories;
 import com.tew.model.Agente;
 import com.tew.model.Cliente;
+import com.tew.model.Piso;
 import com.tew.model.PisoParaVisitar;
 
 @ManagedBean
@@ -31,6 +32,7 @@ public class BeanPisosParaVisitas implements Serializable{
           
           private Agente agentin = new Agente();
           private Cliente clientin = new Cliente();
+          private PisoParaVisitar pisazo= new PisoParaVisitar();
           
         //uso de inyección de dependencia
           @ManagedProperty(value="#{pisoparavisita}") 
@@ -183,6 +185,37 @@ public class BeanPisosParaVisitas implements Serializable{
 				  }
 				  
 		 	  }
+	       
+	       
+	       
+	       
+	       public String nuevaVisita(Piso pisin) {
+	    	   PisoParaVisitarService service;
+	    	   pisazo.setEstado(1);
+	    	   pisazo.setFechaHoraCita(1);
+	    	   pisazo.setidPiso(pisin.getId());
+	    	   clientin = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("CLIENTE"));
+	    	   pisazo.setidCliente(clientin.getId());
+	    	   
+				  try {
+				  // Acceso a la implementacion de la capa de negocio 
+					// a trav��s de la factor��a
+					service = Factories.services.createPisoParaVisitarService();
+			      //Aliminamos el alumno seleccionado en la tabla
+					service.savePisoParaVisitar(pisazo);
+				  //Actualizamos el javabean de alumnos inyectado en la tabla.
+					pisosParaVisitar = (PisoParaVisitar [])service.getPisosParaVisitar().toArray(new PisoParaVisitar[0]);
+					return "exito";
+					
+				  } catch (Exception e) {
+					e.printStackTrace();  
+					return "error";
+				  }
+				  
+	       }
+	       
+	       
+	       
 	       
 	       
 	       

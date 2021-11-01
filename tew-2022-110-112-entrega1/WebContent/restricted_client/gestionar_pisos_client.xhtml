@@ -27,14 +27,14 @@
 				<p:column>
 					<f:facet name="header">#{msgs.tablaAno}</f:facet>#{vpiso.ano}</p:column>
 				<p:column>
-					<f:facet name="header">#{msgs.tablaBaja}</f:facet>
-					<p:commandLink action="#{pisos.baja(valumno)}" type="submit"
-						value="#{msgs.tablaBaja}" immediate="true" update="tablaListado">
+					<f:facet name="header">#{msgs.tablaConfirmar}</f:facet>
+					<p:commandLink action="#{pisosParaVisitar.nuevaVisita(vpiso)}" type="submit"
+						value="#{msgs.tablaConfirmar}" immediate="true" update="tablaListado">
 					</p:commandLink>
 				</p:column>
 				<p:column>
-					<f:facet name="header">#{msgs.tablaEditar}</f:facet>
-					<p:commandLink action="editar" type="submit" value="#{msgs.tablaEditar}"
+					<f:facet name="header">#{msgs.tablaConfirmar}</f:facet>
+					<p:commandLink action="confirmar" type="submit" value="#{msgs.tablaConfirmar}"
 						actionListener="#{piso.setPiso(vpiso)}" immediate="true">
 					</p:commandLink>
 				</p:column>
