@@ -35,11 +35,11 @@ public class BeanPisos implements Serializable{
         	  iniciaAlumno(null);
           }*/
 		  
-		  public Piso[] getAlumnos () {
+		  public Piso[] getPisos () {
 			    return(pisos);
 			  }
 	      
-	       public void setAlumnos(Piso[] pisinos) {
+	       public void setPisos(Piso[] pisinos) {
 				  this.pisos = pisinos;
 		     }  
 	       
