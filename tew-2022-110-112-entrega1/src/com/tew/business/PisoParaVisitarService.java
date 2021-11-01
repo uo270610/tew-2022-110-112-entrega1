@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.tew.business.exception.EntityAlreadyExistsException;
 import com.tew.business.exception.EntityNotFoundException;
-import com.tew.model.Piso;
 import com.tew.model.PisoParaVisitar;
 
 public interface PisoParaVisitarService {

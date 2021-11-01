@@ -10,9 +10,12 @@ import com.tew.persistence.exception.NotPersistedException;
 import impl.tew.business.classes.ClientesAlta;
 import impl.tew.business.classes.ClientesBaja;
 import impl.tew.business.classes.ClientesBuscar;
+import impl.tew.business.classes.ClientesConfirmarVisita;
+import impl.tew.business.classes.ClientesConsultaPisoVisitar;
 import impl.tew.business.classes.ClientesConsultaPorCiudad;
 import impl.tew.business.classes.ClientesConsultaPorPrecio;
 import impl.tew.business.classes.ClientesListado;
+import impl.tew.business.classes.ClientesSolicitarVisita;
 
 public class SimpleClienteService {
 
@@ -49,6 +52,24 @@ public class SimpleClienteService {
 	List<Piso> consultaPisosPorPrecio(int min, int max) throws NotPersistedException {
 		
 		return new ClientesConsultaPorPrecio().consultaPorCiudad(min, max);
+		
+	}
+	
+	void consultaPisoVisitar(Long id) {
+		
+		new ClientesConsultaPisoVisitar().consultaPisoVisitar(id);
+	
+	}
+	
+	void solicitarVisita(Piso piso, long idCliente) throws NotPersistedException {
+		
+		new ClientesSolicitarVisita().solicitarVisita(piso, idCliente);
+		
+	}
+	
+	void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException {
+		
+		new ClientesConfirmarVisita().confirmarVisita(idPiso, idCliente);
 		
 	}
 	
