@@ -4,51 +4,61 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<h:panelGrid id="Grid" columns="2" cellpadding="5">
-  #{msgs.nombre} 
+  #{msgs.tablaPrecio} 
   <h:panelGroup>
-			<p:inputText value="#{alumno.nombre}" required="true"
-				requiredMessage="#{msgs.formAlta_nombre_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_nombre_validatorMessage}"
-				id="nombre">
-				<f:validateLength maximum="20" />
+			<p:inputText value="#{piso.precio}" required="true"
+				requiredMessage="#{msgs.formAlta_precio_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_precio_validatorMessage}"
+				id="precio">
+				<f:validateLength maximum="10" />
 			</p:inputText>
-			<p:message for="nombre" />
+			<p:message for="precio" />
 		</h:panelGroup>
   
-  #{msgs.apellidos} 
+  #{msgs.tablaDireccion} 
   <h:panelGroup>
-			<p:inputText value="#{alumno.apellidos}" required="true"
-				requiredMessage="#{msgs.formAlta_apellidos_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_apellidos_validatorMessage}"
-				id="apellidos">
+			<p:inputText value="#{piso.direccion}" required="true"
+				requiredMessage="#{msgs.formAlta_direccion_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_direccion_validatorMessage}"
+				id="direccion">
 				<f:validateLength maximum="40" />
 			</p:inputText>
-			<p:message for="apellidos" />
+			<p:message for="direccion" />
 		</h:panelGroup>
   
-  #{msgs.userid}
+  #{msgs.tablaEstado}
   <h:panelGroup>
-			<p:inputText value="#{alumno.iduser}" required="true"
-				requiredMessage="#{msgs.formAlta_iduser_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_iduser_validatorMessage}"
-				id="iduser">
-				<f:validateLength minimum="5" maximum="8" />
+			<p:inputText value="#{piso.estado}" required="true"
+				requiredMessage="#{msgs.formAlta_estado_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_estado_validatorMessage}"
+				id="estado">
+				<f:validateLength maximum="1" />
 			</p:inputText>
-			<p:message for="iduser" />
+			<p:message for="estado" />
 		</h:panelGroup>  
   
-  #{msgs.correo}
+  #{msgs.tablaCiudad}
   <h:panelGroup>
-			<p:inputText value="#{alumno.email}" required="true"
-				requiredMessage="#{msgs.formAlta_correo_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_correo_validatorMessage}"
-				id="correo">
-				<f:validateRegex pattern=".+@.+\.[a-z]+" />
+			<p:inputText value="#{piso.ciudad}" required="true"
+				requiredMessage="#{msgs.formAlta_ciudad_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_ciudad_validatorMessage}"
+				id="ciudad">
+				<f:validateLength maximum="20" />
 			</p:inputText>
-			<p:message for="correo" />
+			<p:message for="ciudad" />
+		</h:panelGroup>
+		  #{msgs.tablaAno}
+  <h:panelGroup>
+			<p:inputText value="#{piso.ano}" required="true"
+				requiredMessage="#{msgs.formAlta_ano_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_ano_validatorMessage}"
+				id="ano">
+				<f:validateLength maximum="4" />
+			</p:inputText>
+			<p:message for="ano" />
 		</h:panelGroup>
 		<p:commandButton value="#{msgs.botonSalvar}" process="@form"
-			action="#{controller.salva}" update="Grid">
+			action="#{pisos.salva}" update="Grid">
 		</p:commandButton>
 	</h:panelGrid>
 </ui:composition>

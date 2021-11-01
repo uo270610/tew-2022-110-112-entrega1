@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16357010761350" configfile="/tew-2022-110-112-entrega1/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="370" id="pf16357014450014" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16357014450015 pf163572181721510" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="515" id="pf16357014450014" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf16357014450015 pf163572181721510 pf16357623081040 pf16357623081041" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="Registro.xhtml" x="338" y="178" id="pf16357014450016" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf16357114232837 pf16357114232838" inlinks="pf16357014450015 pf16357114232838" path="/Registro.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted_client/index_client.xhtml" x="554" y="178" id="pf16357114232839" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf16357114232837" path="/restricted_client/index_client.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="562" id="pf163572181721511" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf163572181721510" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted_client/index_client.xhtml" x="554" y="380" id="pf16357114232839" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" inlinks="pf16357114232837 pf16357623081042 pf16357623081041" path="/restricted_client/index_client.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="583" id="pf163572181721511" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf16357623081043 pf16357623081042 pf16357623081044" inlinks="pf163572181721510 pf16357623081044" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted_agent/index_agent.xhtml" x="554" y="785" id="pf16357623081045" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" inlinks="pf16357623081043 pf16357623081040" path="/restricted_agent/index_agent.xhtml"/>
   <links id="pf16357014450015" target="pf16357014450016" source="pf16357014450014" outcome="registro"/>
   <links id="pf16357114232837" target="pf16357114232839" source="pf16357014450016" outcome="success" fromaction="#{clientes.salva}"/>
   <links id="pf163572181721510" target="pf163572181721511" source="pf16357014450014" outcome="casa"/>
+  <links id="pf16357623081043" target="pf16357623081045" source="pf163572181721511" outcome="success_agent" fromaction="#{login.verify}"/>
+  <links id="pf16357623081042" target="pf16357114232839" source="pf163572181721511" outcome="success_client" fromaction="#{login.verify}"/>
+  <links id="pf16357623081040" target="pf16357623081045" source="pf16357014450014" outcome="casa_agent"/>
+  <links id="pf16357623081041" target="pf16357114232839" source="pf16357014450014" outcome="casa_client"/>
   <links id="pf16357114232838" target="pf16357014450016" source="pf16357014450016" outcome="error" fromaction="#{clientes.salva}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf16357623081044" target="pf163572181721511" source="pf163572181721511" outcome="login" fromaction="#{login.verify}">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>

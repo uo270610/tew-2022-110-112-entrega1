@@ -29,10 +29,10 @@
   #{msgs.contraseña}
   <h:panelGroup>
 			<p:inputText value="#{cliente.passwd}" required="true"
-				requiredMessage="#{msgs.formAlta_iduser_requiredMessage}"
-				validatorMessage="#{msgs.formAlta_iduser_validatorMessage}"
+				requiredMessage="#{msgs.formAlta_passwd_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_passwd_validatorMessage}"
 				id="passwd">
-				<f:validateLength minimum="5" maximum="8" />
+				<f:validateLength maximum="10" />
 			</p:inputText>
 			<p:message for="passwd" />
 		</h:panelGroup>  
