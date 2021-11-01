@@ -6,14 +6,10 @@ import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import com.tew.business.LoginService;
 import com.tew.infrastructure.Factories;
-import com.tew.model.Agente;
-import com.tew.model.Cliente;
 import com.tew.model.ReturnVerify;
-import com.tew.model.User;
 
 @SessionScoped
 @ManagedBean(name = "login")
@@ -22,7 +18,7 @@ public class BeanLogin implements Serializable {
 	private String email = "";
 	private String password = "";
 	
-	private User usuarin;
+	
 	
 	
 	//AQUI FALTA CODIGO

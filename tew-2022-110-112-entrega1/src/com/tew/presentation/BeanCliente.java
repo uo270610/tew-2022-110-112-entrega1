@@ -29,5 +29,5 @@ public class BeanCliente extends Cliente implements Serializable {
     	    setApellidos(bundle.getString("valorDefectoApellidos"));
     	    setEmail(bundle.getString("valorDefectoCorreo"));
     	    setPasswd(bundle.getString("valorDefectoContraseña"));
-	  }	      
+	 }	      
 }

@@ -6,5 +6,6 @@ public interface PersistenceFactory {
 	AgenteDao createAgenteDao();
 	PisoDao createPisoDao();
 	PisoParaVisitarDao createPisoParaVisitarDao();
+	LoginDao createLoginDao();
 	
 }

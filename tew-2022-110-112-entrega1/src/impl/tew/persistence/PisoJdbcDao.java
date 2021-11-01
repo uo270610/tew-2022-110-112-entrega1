@@ -181,6 +181,7 @@ public class PisoJdbcDao implements PisoDao{
 			
 
 			if(r!=null) {
+				psaux.close();
 				psaux = con.prepareStatement("DELETE FROM PISOS_PARA_VISITAR WHERE ID=?");
 				psaux.setLong(1, idp);
 				psaux.executeUpdate();

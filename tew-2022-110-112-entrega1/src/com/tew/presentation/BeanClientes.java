@@ -14,7 +14,6 @@ import javax.faces.event.ActionEvent;
 import com.tew.business.ClienteService;
 import com.tew.infrastructure.Factories;
 import com.tew.model.Cliente;
-import com.tew.model.ReturnVerify;
 import com.tew.model.User;
 
 @ManagedBean

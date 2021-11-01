@@ -18,7 +18,7 @@ public interface ClienteDao {
 	List<Piso> consultaPisosPorCiudad(String ciudad);
 	List<Piso> consultaPisoPorPrecio(double min, double max);
 	List<PisoParaVisitar> consultaPisoVisitar(long idCliente);
-	void solicitarVisita(Piso piso, long idCliente) throws NotPersistedException;
+	void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException;
 	void confirmarVisita(long idPiso, long idCliente) throws NotPersistedException;
 	
 }

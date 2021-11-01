@@ -2,8 +2,10 @@ package impl.tew.business;
 
 import java.util.List;
 
+import com.tew.business.ClienteService;
 import com.tew.model.Cliente;
 import com.tew.model.Piso;
+import com.tew.model.PisoParaVisitar;
 import com.tew.persistence.exception.AlreadyPersistedException;
 import com.tew.persistence.exception.NotPersistedException;
 
@@ -17,42 +19,48 @@ import impl.tew.business.classes.ClientesConsultaPorPrecio;
 import impl.tew.business.classes.ClientesListado;
 import impl.tew.business.classes.ClientesSolicitarVisita;
 
-public class SimpleClienteService {
-
-	List<Cliente> getClientes() throws Exception{		
+public class SimpleClienteService implements ClienteService {
+	
+	@Override
+	public List<Cliente> getClientes() throws Exception{		
 		return new ClientesListado().getCliente();		
 	}
-	
-	void saveCliente(Cliente cliente) throws AlreadyPersistedException {		
+	@Override
+	public void saveCliente(Cliente cliente) throws AlreadyPersistedException {		
 		new ClientesAlta().save(cliente);		
 	}
-	
-	void updateCliente(long id) throws NotPersistedException {		
+	@Override
+	public void updateCliente(long id) throws NotPersistedException {		
 		new ClientesBaja().delete(id);		
 	}
-	
-	Cliente findById(Long id) throws NotPersistedException {
+	@Override
+	public Cliente findById(Long id) throws NotPersistedException {
 		return new ClientesBuscar().find(id);		
 	}
-	
-	List<Piso> consultaPisosPorCiudad(String ciudad) throws NotPersistedException {		
+	@Override
+	public List<Piso> consultaPisosPorCiudad(String ciudad) throws NotPersistedException {		
 		return new ClientesConsultaPorCiudad().consultaPorCiudad(ciudad);		
 	}
-	
-	List<Piso> consultaPisosPorPrecio(int min, int max) throws NotPersistedException {		
-		return new ClientesConsultaPorPrecio().consultaPorCiudad(min, max);		
+	@Override
+	public List<Piso> consultaPisoPorPrecio(double min, double max) throws NotPersistedException {		
+		return new ClientesConsultaPorPrecio().consultaPorPrecio(min, max);		
 	}
-	
-	void consultaPisoVisitar(Long id) {		
-		new ClientesConsultaPisoVisitar().consultaPisoVisitar(id);	
+	@Override
+	public List<PisoParaVisitar> consultaPisoVisitar(long idCliente) throws Exception{		
+		return new ClientesConsultaPisoVisitar().consultaPisoVisitar(idCliente);	
 	}
-	
-	void solicitarVisita(Piso piso, long idCliente) throws NotPersistedException {		
-		new ClientesSolicitarVisita().solicitarVisita(piso, idCliente);		
+	@Override
+	public void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException {		
+		new ClientesSolicitarVisita().solicitarVisita(idPiso, idCliente);		
 	}
-	
-	void solicitarVisita(long idPiso, long idCliente) throws NotPersistedException {	
+	@Override
+	public void confirmarVisita(long idPiso, long idCliente) throws NotPersistedException {	
 		new ClientesConfirmarVisita().confirmarVisita(idPiso, idCliente);	
+	}
+	@Override
+	public void deleteCliente(Long id) throws NotPersistedException {
+		// TODO Auto-generated method stub
+		new ClientesBaja().delete(id);
 	}
 	
 }

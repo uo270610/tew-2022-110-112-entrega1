@@ -185,7 +185,7 @@ public class ClienteJdbcDao implements ClienteDao {
 			if (rows != 1) {
 				throw new NotPersistedException("Cliente " + id + " not found");
 			} 
-			
+			ps.close();
 			ps = con.prepareStatement("DELETE FROM PISOS_PARA_VISITAR WHERE ID_CLIENTE=?");
 			ps.setLong(1, id);
 			rows = ps.executeUpdate();
@@ -399,7 +399,7 @@ public class ClienteJdbcDao implements ClienteDao {
 	}
 
 	@Override
-	public void solicitarVisita(Piso piso, long idc) throws NotPersistedException {
+	public void solicitarVisita(long idp, long idc) throws NotPersistedException {
 		// TODO Auto-generated method stub
 		PreparedStatement ps = null;
 		int rows = 0;
@@ -415,13 +415,13 @@ public class ClienteJdbcDao implements ClienteDao {
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
 			ps = con.prepareStatement("INSERT INTO PISOS_PARA_VISITAR (id_piso, id_cliente, fecha_hora_cita, estado) "
 					+ "VALUES(?,?,?,?)");
-			ps.setLong(1, piso.getId());
+			ps.setLong(1, idp);
 			ps.setLong(2, idc);
 			//ps.setString(3, idk);
 			ps.setInt(4, 1);			
 			rows = ps.executeUpdate();
 			if (rows != 1) {
-				throw new NotPersistedException("Cliente " + idc + " o piso " + piso.getId() + " not found");
+				throw new NotPersistedException("Cliente " + idc + " o piso " + idp + " not found");
 			} 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

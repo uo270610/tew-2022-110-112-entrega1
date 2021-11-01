@@ -2,6 +2,7 @@ package impl.tew.persistence;
 
 import com.tew.persistence.AgenteDao;
 import com.tew.persistence.ClienteDao;
+import com.tew.persistence.LoginDao;
 import com.tew.persistence.PersistenceFactory;
 import com.tew.persistence.PisoDao;
 import com.tew.persistence.PisoParaVisitarDao;
@@ -30,6 +31,12 @@ public class SimplePersistenceFactory implements PersistenceFactory{
 	public PisoParaVisitarDao createPisoParaVisitarDao() {
 		// TODO Auto-generated method stub
 		return new PisoParaVisitarJdbcDao();
+	}
+
+	@Override
+	public LoginDao createLoginDao() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

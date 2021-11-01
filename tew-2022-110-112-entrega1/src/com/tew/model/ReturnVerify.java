@@ -7,11 +7,6 @@ public class ReturnVerify {
     // IMPORTANTE, LA STRING TENDRA QUE SER 
     // "AGENTE" O "CLIENTE" PARA QUE FUNCIONEN LOS CHECKS POSTERIORES
 
-    public ReturnVerify(User usador, String clasecita) {
-        this.usuario = usador;
-        this.clase = clasecita;
-    }
-
     public User getUsuario() {
     	try{
     		return usuario;

@@ -9,7 +9,7 @@ import com.tew.persistence.exception.NotPersistedException;
 
 public class ClientesConsultaPorPrecio {
 	
-	public List<Piso> consultaPorCiudad(int min, int max) throws NotPersistedException {
+	public List<Piso> consultaPorPrecio(double min, double max) throws NotPersistedException {
 		ClienteDao dao = Factories.persistence.createClienteDao();
 		List<Piso> pisos = dao.consultaPisoPorPrecio(min, max);
 		if (pisos==null) {

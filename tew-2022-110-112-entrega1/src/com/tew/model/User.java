@@ -11,6 +11,10 @@ public class User implements Serializable {
 	private String login;
 	private String passwd;
 	
+	public User() {
+		
+	}
+	
 	public User(String l, String n) {
 		// TODO Auto-generated constructor stub
 		this.login = l;
