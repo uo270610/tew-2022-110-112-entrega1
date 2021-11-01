@@ -54,6 +54,22 @@ public class BeanPisosParaVisitas implements Serializable{
 				  this.pisosParaVisitar = pisinos;
 		     }  
 	       
+	       public PisoParaVisitar[] getPisosParaVisitarCliente () {
+			    return(pisosParaVisitarCliente);
+			  }
+	      
+	       public void setPisosParaVisitarCliente(PisoParaVisitar[] pisinos) {
+				  this.pisosParaVisitarCliente = pisinos;
+		     } 
+	       
+	       public PisoParaVisitar[] getPisosParaVisitarAgente () {
+			    return(pisosParaVisitarAgente);
+			  }
+	      
+	       public void setPisosParaVisitarAgente(PisoParaVisitar[] pisinos) {
+				  this.pisosParaVisitarAgente = pisinos;
+		     }
+	       
 	       /*
 	       public void iniciaAlumno(ActionEvent event) {
 	    	   FacesContext facesContext = FacesContext.getCurrentInstance();
