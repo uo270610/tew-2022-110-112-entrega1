@@ -25,9 +25,7 @@ public class BeanPisos implements Serializable{
 	     
 		
           private Piso[] pisos = null;
-          
-          
-          List<Piso> pisitos = new ArrayList<Piso>();
+         
           
           private Piso pisin = new Piso();
           private Agente agentin = new Agente();
@@ -36,8 +34,8 @@ public class BeanPisos implements Serializable{
         //uso de inyección de dependencia
           @ManagedProperty(value="#{piso}") 
           private BeanPiso piso;
-          public BeanPiso getAlumno() { return piso; }
-          public void setAlumno(BeanPiso pisin) {this.piso = pisin;}
+          public BeanPiso getPiso() { return piso; }
+          public void setPiso(BeanPiso pisin) {this.piso = pisin;}
           
           
          /* public BeanAlumnos()
@@ -45,13 +43,7 @@ public class BeanPisos implements Serializable{
         	  iniciaAlumno(null);
           }*/
 		  
-          public List<Piso> getPisitos () {
-			    return(pisitos);
-			  }
-	      
-	       public void setPisitos(List<Piso> pisinos) {
-				  this.pisitos = pisinos;
-		     }
+ 
           
 		  public Piso[] getPisos () {
 			    return(pisos);
@@ -85,17 +77,6 @@ public class BeanPisos implements Serializable{
 					service = Factories.services.createPisoService();
 					// De esta forma le damos informaci��n a toArray para poder hacer el casting a Alumno[]
 					pisos = (Piso [])service.getPisos().toArray(new Piso[0]);
-					
-					
-				
-			  		pisin.setId((long) 4);
-			  		pisin.setIdAgente((long) 7);
-			  		pisin.setPrecio(5000);
-			  		pisin.setDireccion("mi_casa");
-			  		pisin.setCiudad("mi ciudad");
-			  		pisin.setAno(25);
-			  		pisin.setEstado(1);
-			  		pisitos.add(pisin);
 					
 					return "exito";
 					
