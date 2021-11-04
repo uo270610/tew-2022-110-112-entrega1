@@ -105,7 +105,7 @@
 </navigation-rule>
 
 <navigation-rule>
- <from-view-id>/restricted/CreacionPisos_agent.xhtml</from-view-id>
+ <from-view-id>/restricted_agent/CreacionPisos_agent.xhtml</from-view-id>
 	<navigation-case>
 		<from-action>#{pisos.salva}</from-action>
 		<from-outcome>exito</from-outcome>
@@ -132,6 +132,10 @@
 			<from-outcome>gestion_agente_citas</from-outcome>
 			<to-view-id>/restricted_agent/gestionar_citas_agent.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>duplicar_pagina</from-outcome>
+			<to-view-id>/restricted_agent/gestionar_pisos_agent_con_duplicar.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -147,6 +151,14 @@
 		<navigation-case>
 			<from-outcome>editar</from-outcome>
 			<to-view-id>/restricted_client/editar_citas_client.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/restricted_agent/gestionar_pisos_agent_con_duplicar.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>duplicar</from-outcome>
+			<to-view-id>/restricted_agent/form_alumno.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
