@@ -30,7 +30,7 @@ public class SimpleServicesFactory implements ServicesFactory {
 	
 	@Override
 	public PisoService createPisoService() {
-		return null;
+		return new SimplePisoService();
 	}
 	
 	@Override
