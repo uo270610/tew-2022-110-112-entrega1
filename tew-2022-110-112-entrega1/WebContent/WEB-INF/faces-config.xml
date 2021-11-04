@@ -158,7 +158,7 @@
 		<from-view-id>/restricted_agent/gestionar_pisos_agent_con_duplicar.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>duplicar</from-outcome>
-			<to-view-id>/restricted_agent/form_alumno.xhtml</to-view-id>
+			<to-view-id>/restricted_agent/Duplicar_pisos_agent.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

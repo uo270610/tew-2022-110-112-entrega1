@@ -62,7 +62,17 @@ public class PisoJdbcDao implements PisoDao{
 			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
 			if (con != null) {try{ con.close(); } catch (Exception ex){}};
 		}
-		
+		/*
+		Piso piso = new Piso();
+		piso.setId((long) 4);
+		piso.setIdAgente((long) 7);
+		piso.setPrecio(5000);
+		piso.setDireccion("mi_casa");
+		piso.setCiudad("mi ciudad");
+		piso.setAno(25);
+		piso.setEstado(1);
+		pisos.add(piso);
+		*/
 		return pisos;
 	}
 

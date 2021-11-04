@@ -5,12 +5,15 @@ import java.util.ResourceBundle;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import com.tew.model.Agente;
 import com.tew.model.Piso;
 
 @ManagedBean(name="piso")
 @SessionScoped
 public class BeanPiso extends Piso implements Serializable {
 	private static final long serialVersionUID = 55556L;
+	private Agente agentin = new Agente();
 	
 	public BeanPiso() {
 		iniciaPiso(null);
@@ -39,5 +42,17 @@ public class BeanPiso extends Piso implements Serializable {
 	    	    setEstado(1);
 	    	    setCiudad(bundle.getString("valorDefectoCiudad"));
 	    	    setAno(1);
-		  }	       
+		  }	 
+	    
+	    public void setPisoDuplicar(Piso pisin) {
+			setId(null);
+			setPrecio(pisin.getPrecio());
+			setEstado(pisin.getEstado());
+			setCiudad(pisin.getCiudad());
+			setAno(pisin.getAno());
+			agentin = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("AGENTE"));
+			
+			setIdAgente(agentin.getId());
+		}
+	    
 }
