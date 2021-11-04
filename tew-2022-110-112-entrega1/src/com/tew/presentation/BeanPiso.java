@@ -44,15 +44,4 @@ public class BeanPiso extends Piso implements Serializable {
 	    	    setAno(1);
 		  }	 
 	    
-	    public void setPisoDuplicar(Piso pisin) {
-			setId(null);
-			setPrecio(pisin.getPrecio());
-			setEstado(pisin.getEstado());
-			setCiudad(pisin.getCiudad());
-			setAno(pisin.getAno());
-			agentin = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("AGENTE"));
-			
-			setIdAgente(agentin.getId());
-		}
-	    
 }

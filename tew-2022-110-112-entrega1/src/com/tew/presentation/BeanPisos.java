@@ -1,5 +1,7 @@
 package com.tew.presentation;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +12,7 @@ import javax.faces.event.ActionEvent;
 
 import com.tew.business.PisoService;
 import com.tew.infrastructure.Factories;
+import com.tew.model.Agente;
 import com.tew.model.Piso;
 
 @ManagedBean
@@ -23,6 +26,13 @@ public class BeanPisos implements Serializable{
 		
           private Piso[] pisos = null;
           
+          
+          List<Piso> pisitos = new ArrayList<Piso>();
+          
+          private Piso pisin = new Piso();
+          private Agente agentin = new Agente();
+          
+          
         //uso de inyección de dependencia
           @ManagedProperty(value="#{piso}") 
           private BeanPiso piso;
@@ -35,6 +45,14 @@ public class BeanPisos implements Serializable{
         	  iniciaAlumno(null);
           }*/
 		  
+          public List<Piso> getPisitos () {
+			    return(pisitos);
+			  }
+	      
+	       public void setPisitos(List<Piso> pisinos) {
+				  this.pisitos = pisinos;
+		     }
+          
 		  public Piso[] getPisos () {
 			    return(pisos);
 			  }
@@ -67,6 +85,17 @@ public class BeanPisos implements Serializable{
 					service = Factories.services.createPisoService();
 					// De esta forma le damos informaci��n a toArray para poder hacer el casting a Alumno[]
 					pisos = (Piso [])service.getPisos().toArray(new Piso[0]);
+					
+					
+				
+			  		pisin.setId((long) 4);
+			  		pisin.setIdAgente((long) 7);
+			  		pisin.setPrecio(5000);
+			  		pisin.setDireccion("mi_casa");
+			  		pisin.setCiudad("mi ciudad");
+			  		pisin.setAno(25);
+			  		pisin.setEstado(1);
+			  		pisitos.add(pisin);
 					
 					return "exito";
 					
@@ -124,6 +153,27 @@ public class BeanPisos implements Serializable{
 					else {
 						service.updatePiso(piso); 
 					} 
+					//Actualizamos el javabean de alumnos inyectado en la tabla
+					pisos = (Piso [])service.getPisos().toArray(new Piso[0]);
+					return "exito";
+					
+				  } catch (Exception e) {
+					  e.printStackTrace();
+					return "error";
+				  }
+				  
+		 	  }
+	       
+	       public String salvaDuplicar() {
+		       PisoService service;
+				  try {
+				  // Acceso a la implementacion de la capa de negocio 
+					// a trav��s de la factor��a
+					service = Factories.services.createPisoService();
+			      //Salvamos o actualizamos el alumno segun sea una operacion de alta o de edici��n
+					agentin = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("AGENTE"));
+					piso.setIdAgente(agentin.getId());
+					service.savePiso(piso);
 					//Actualizamos el javabean de alumnos inyectado en la tabla
 					pisos = (Piso [])service.getPisos().toArray(new Piso[0]);
 					return "exito";

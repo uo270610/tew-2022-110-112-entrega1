@@ -11,7 +11,7 @@
 
 	<ui:define name="cuerpo">
 		<h:form>
-			<p:dataTable id="tablaListado" var="vpiso" value="#{pisos.pisos}" border="1">
+			<p:dataTable id="tablaListado" var="vpiso" value="#{pisos.pisitos}" border="1">
 				<p:column>
 					<f:facet name="header">#{msgs.tablaId}</f:facet>#{vpiso.Id}</p:column>
 				<p:column>
@@ -41,7 +41,7 @@
 				<p:column>
 					<f:facet name="header">#{msgs.tablaDuplicar}</f:facet>
 					<p:commandLink action="duplicar" type="submit" value="#{msgs.tablaDuplicar}"
-						actionListener="#{piso.setPisoDuplicar(vpiso)}" immediate="true">
+						actionListener="#{piso.setPiso(vpiso)}" immediate="true">
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
