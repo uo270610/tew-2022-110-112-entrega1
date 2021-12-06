@@ -31,18 +31,14 @@ public class LoginJdbcDao implements LoginDao{
 			// Obtenemos la conexiï¿½ï¿½n a la base de datos.
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
-			ps = con.prepareStatement("SELECT * FROM AGENTES WHERE LOGIN=? AND PASSWD=?");
+			ps = con.prepareStatement("SELECT * FROM AGENTES WHERE LOGIN='agente1@micorreo.com' AND PASSWD='clave1'");
 			ps.setString(1, email);
 			ps.setString(2, passwd);
 			rs = ps.executeQuery();
 
-			User user = new User();
 			rv = new ReturnVerify();
-			System.out.print("Hola");
 			if(rs.next()) {
-				System.out.print("acceso a la base de datos");
-				user.setLogin(email);
-				user.setPasswd(passwd);
+				User user = new User(rs.getString("LOGIN"), rs.getString("PASSWD"));
 				rv.setUsuario(user);
 				rv.setClase("AGENTE");
 			}
@@ -56,9 +52,8 @@ public class LoginJdbcDao implements LoginDao{
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				user.setLogin(email);
-				user.setPasswd(passwd);
-				rv.setUsuario(user);
+				User user2 = new User(rs.getString("LOGIN"), rs.getString("PASSWD"));
+				rv.setUsuario(user2);
 				rv.setClase("CLIENTE");
 			}
 			
